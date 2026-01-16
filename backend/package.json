@@ -1,0 +1,17 @@
+{
+  "name": "lead-management-backend",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "seed": "node src/utils/seedLeads.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.19.2",
+    "faker": "^5.5.3",
+    "mongoose": "^8.0.3"
+  }
+}
