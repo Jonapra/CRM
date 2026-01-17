@@ -170,8 +170,9 @@ Password: demo123
 
 ## 🚀 Deployed URLs
 
-* **Frontend:** ⬅️ REPLACE WITH YOUR VERCEL / NETLIFY LINK
-* **Backend:** ⬅️ REPLACE WITH YOUR RENDER / RAILWAY LINK
+--Frontend link: https://crm-ten-blue.vercel.app/
+
+-- Backend link: https://crm-9zgb.onrender.com/api/leads
 
 ---
 
