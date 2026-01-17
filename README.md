@@ -101,8 +101,9 @@ npm install
 Create a `.env` file inside the `backend` directory:
 
 ```env
-MONGO_URI=mongodb+srv://AnkitPradhan:crmDb23@crm.rfe17kn.mongodb.net/leadsdb
+MONGO_URI=your_mongodb_atlas_connection_string
 PORT=5000
+
 ```
 
 Start the backend server:
