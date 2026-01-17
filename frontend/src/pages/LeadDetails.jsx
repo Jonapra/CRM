@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { api } from "../services/api";
 export default function LeadDetails() {
   const { id } = useParams();
   const [lead, setLead] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/leads/${id}`)
+      api.get(`/api/leads/${id}`)
       .then((res) => setLead(res.data))
       .catch(console.error);
   }, [id]);

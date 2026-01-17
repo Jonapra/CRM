@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { api } from "../services/api";
 export default function Dashboard() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
@@ -20,9 +20,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:5000/api/leads?search=${search}&status=${status}&source=${source}&page=${page}&limit=${limit}&sortBy=${sortBy}&sortOrder=${sortOrder}`
-      )
+      api.get(
+        `/api/leads?search=${search}&status=${status}&source=${source}&page=${page}&limit=${limit}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
       .then((res) => {
         setLeads(res.data.data);
         setMetrics(res.data.metrics);
