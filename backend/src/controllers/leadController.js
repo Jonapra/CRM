@@ -21,6 +21,8 @@ export const getLeads = async (req, res) => {
       source,
       page = 1,
       limit = 10,
+      sortBy = 'createdAt',
+      sortOrder = 'desc'
     } = req.query;
 
     const query = {};
@@ -37,19 +39,22 @@ export const getLeads = async (req, res) => {
 
     const skip = (page - 1) * limit;
 
-    // paginated leads
+    // Create sort object
+    const sort = {};
+    sort[sortBy] = sortOrder === 'asc' ? 1 : -1;
+
+    // Paginated leads WITH SORTING
     const leads = await Lead.find(query)
+      .sort(sort)
       .skip(skip)
       .limit(Number(limit));
 
     // TOTAL counts (no pagination)
-    const totalLeads = await Lead.countDocuments(query);
+    const totalLeads = await Lead.countDocuments({});
     const convertedLeads = await Lead.countDocuments({
-      ...query,
       status: "converted",
     });
     const newLeads = await Lead.countDocuments({
-      ...query,
       status: "new",
     });
 
