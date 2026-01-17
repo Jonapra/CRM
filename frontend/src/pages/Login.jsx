@@ -1,15 +1,23 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    if (email && password) {
-      console.log("Login successful");
+
+    // basic validation (enough for assignment)
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
     }
+
+    // fake auth success
+    navigate("/dashboard");
   };
 
   return (
@@ -21,73 +29,66 @@ export default function Login() {
             <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-white text-2xl font-bold">L</span>
             </div>
-            <h1 className="ml-3 text-2xl font-semibold text-gray-900">Lead CRM</h1>
+            <h1 className="ml-3 text-2xl font-semibold text-gray-900">
+              Lead CRM
+            </h1>
           </div>
 
           {/* Welcome Text */}
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">Welcome back</h2>
-            <p className="text-gray-600">Sign in to your account to continue</p>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+              Welcome back
+            </h2>
+            <p className="text-gray-600">
+              Sign in to your account to continue
+            </p>
           </div>
 
           {/* Login Form */}
-          <div onSubmit={handleLogin}>
+          <form onSubmit={handleLogin}>
             <div className="mb-5">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Email address
               </label>
               <input
-                id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 required
               />
             </div>
 
             <div className="mb-6">
-              <div className="flex items-center justify-between mb-2">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password
-                </label>
-                <button type="button" className="text-sm text-blue-600 hover:text-blue-700">
-                  Forgot password?
-                </button>
-              </div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Password
+              </label>
               <input
-                id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 required
               />
             </div>
 
             <button
               type="submit"
-              onClick={handleLogin}
               className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors mb-4"
             >
               Sign in
             </button>
+          </form>
 
-            <p className="text-center text-sm text-gray-600">
-              Don't have an account?{" "}
-              <button type="button" className="text-blue-600 hover:text-blue-700 font-medium">
-                Sign up
-              </button>
-            </p>
-          </div>
+          <p className="text-center text-sm text-gray-600">
+            Don't have an account?{" "}
+            <span className="text-blue-600 font-medium cursor-pointer">
+              Sign up
+            </span>
+          </p>
         </div>
-
-        {/* Footer */}
-        <p className="text-center text-sm text-gray-500 mt-6">
-          © 2026 Lead CRM. All rights reserved.
-        </p>
       </div>
     </div>
   );
