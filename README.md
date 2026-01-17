@@ -1,4 +1,4 @@
-# 📊 Lead Management Dashboard (Mini CRM)
+# 📊 Lead Management Dashboard (CRM)
 
 A full-stack **Lead Management Dashboard** built as part of a fresher hiring take-home assignment.
 This project demonstrates backend API design, MongoDB integration, server-side data handling, and a responsive frontend UI.
